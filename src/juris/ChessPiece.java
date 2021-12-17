@@ -9,8 +9,32 @@ public abstract class ChessPiece {
     }
     public abstract String getColor();
 
-    public abstract boolean canMoveToPosition();
+    public abstract boolean canMoveToPosition(ChessBoard chessBoard, int startLine, int startColumn, int endLine, int endColumn);
 
     public abstract String getSymbol();
 
+    protected boolean isMoveInsideBoard(int startLine, int startColumn, int endLine, int endColumn){
+        if ( startLine<0 || startLine>7
+        || startColumn<0 || startColumn>7
+        || endLine<0 || endLine>7
+        || endColumn<0 || endLine>7){
+            return false;
+        }
+        else return true;
+    }
+
+    protected boolean isStartEndDifferent(int startLine, int startColumn, int endLine, int endColumn){
+        if (startLine==endLine && startColumn==endColumn){
+            return false;
+        }
+        else return true;
+    }
+
+    protected boolean isMoveEndSameColor(int endLine, int endColumn, ChessBoard chessBoard){
+        if (chessBoard.board[endLine][endColumn].color.equals(color)){
+            return false;
+        }
+        else return true;
+
+    }
 }
