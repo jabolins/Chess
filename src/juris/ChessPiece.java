@@ -17,7 +17,7 @@ public abstract class ChessPiece {
         if ( startLine<0 || startLine>7
         || startColumn<0 || startColumn>7
         || endLine<0 || endLine>7
-        || endColumn<0 || endLine>7){
+        || endColumn<0 || endColumn>7){
             return false;
         }
         else return true;
@@ -31,10 +31,10 @@ public abstract class ChessPiece {
     }
 
     protected boolean isMoveEndSameColor(int endLine, int endColumn, ChessBoard chessBoard){
-        if (chessBoard.board[endLine][endColumn].color.equals(color)){
-            return false;
+        if ( chessBoard.board[endLine][endColumn]!=null && chessBoard.board[endLine][endColumn].getColor().equals(color)){
+            return true;
         }
-        else return true;
+        else return false;
 
     }
 }
